@@ -13,18 +13,41 @@
     <div class="container">
           
           <div class="row" >
-            <div class="col-3">
+            <div class="col-md-3 col-sm-2 ">
             </div>
-            <div class="col-6 justify-content-md-cente">
+            <div class="col-md-6  col-sm-8 justify-content-md-cente">
                     <div class="card text-center">
                             <div class="card-header">
                               密码记录辅助工具
                             </div>
                             <div class="card-body">
-                              <input type="text" id="source" class="form-control" placeholder="source" />
-                              <input type="text" id="dest" class="form-control" placeholder="destination" />
-                              <input type="password" id="key" class="form-control" placeholder="key" />
-                              <p></p>
+								<div class="input-group input-group-sm mb-3">
+								  <div class="input-group-prepend">
+								    <span class="input-group-text" id="inputGroup-sizing-sm">原始密码</span>
+								  </div>
+								  <input type="text" id="source"  class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+								  	<div class="input-group-append">
+								    	<button class="btn btn-primary" type="button" id="btn-random-pass">
+								    		<span class="glyphicon glyphicon-sort-by-attributes"></span>
+								    		随机生成
+								    	</button>
+									</div>								  
+								</div>
+								
+								<div class="input-group input-group-sm mb-3">
+								  <div class="input-group-prepend">
+								    <span class="input-group-text" id="inputGroup-sizing-sm">加密密钥</span>
+								  </div>
+								  <input type="password" id="key"  class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+								</div>	
+                              
+								<div class="input-group input-group-sm mb-3">
+								  <div class="input-group-prepend">
+								    <span class="input-group-text" id="inputGroup-sizing-sm">加密密码</span>
+								  </div>
+								  <input type="text" id="dest"  class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+								</div>	
+                              
                               <button type="button" class="btn btn-primary btn-sm" onclick="doEncrypt()">加密</button>
                               <button type="button" class="btn btn-light btn-sm" onclick="doDecrypt()">解密</button>  
                             </div>
@@ -33,7 +56,7 @@
                             </div>
                           </div>         
             </div>
-            <div class="col-3">
+            <div class="col-md-3 col-sm-2">
             </div>
           </div>             
       </div>
@@ -46,7 +69,6 @@
         function doEncrypt() {
             $('#dest').val(CryptoJS.AES.encrypt($("#source").val(), $("#key").val()));
         }
-
         function doDecrypt() {
             $('#source').val(CryptoJS.AES.decrypt($("#dest").val(), $("#key").val()).toString(CryptoJS.enc.Utf8));
         }
